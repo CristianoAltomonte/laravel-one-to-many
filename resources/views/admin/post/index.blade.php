@@ -14,13 +14,19 @@
                     <h2 class="card-title text-center">{{ $post->title }}</h2>
                     <p class="card-text">{{ $post->body }}</p>
 
+                    @if ($post->category)
+                       {{ $post->category['name'] }}
+                    @endif
+
+
                     <div class="d-flex justify-content-between">
 
                         <div>
                             <a href="{{ route('admin.posts.show', $post->id) }}" class="btn btn-primary m-2">Mostra Post</a>
                         </div>
                         <div>
-                            <a href="{{ route('admin.posts.edit', $post->id) }}" class="btn btn-warning m-2">Modifica Post</a>
+                            <a href="{{ route('admin.posts.edit', $post->id) }}" class="btn btn-warning m-2">Modifica
+                                Post</a>
                         </div>
                         {{-- <a href="{{route('admin.post.show', $post->id)}}" class="btn btn-primary">Open Post</a> --}}
                         <form action="{{ route('admin.posts.destroy', $post->id) }}" method="POST">
@@ -41,7 +47,7 @@
 
     </div>
     <div class="d-flex justify-content-center">
-        {{$posts ->links ()}}
+        {{ $posts->links() }}
 
     </div>
 @endsection
